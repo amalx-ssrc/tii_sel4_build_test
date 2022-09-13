@@ -1,12 +1,12 @@
-name: tii-sel4-release
+name: tii-seL4-release
 
 on:
   workflow_dispatch:
     inputs:
-      tii_sel4_version:
-        description: 'Sel4-vm release version'
+      tii-sel4-version:
+        description: 'SeL4-vm release version'
         required: true
-      release_doc:
+      release-doc:
         description: 'Release doc location'
         required: true
       platform:
@@ -30,13 +30,13 @@ on:
 
 jobs:
     tii-sel4-vm:
-      name: build tii-sel4-vm
+      name: build tii-seL4-vm
       runs-on: self-hosted
       steps:
         - name: Prepare workspace
           run: |
            rm -rf *
-           echo "TII_SEL4_RELEASE=tii_sel4_${{inputs.tii_sel4_version}}" >> $GITHUB_ENV
+           echo "TII_SEL4_RELEASE=tii_sel4_${{inputs.tii-sel4-version}}" >> $GITHUB_ENV
         - name: Checkout code for using local actions
           uses: actions/checkout@v2
 
@@ -57,8 +57,7 @@ jobs:
           working-directory: ./workspace
           run: |
             sudo chown -R $USER.$USER ../workspace
-            sed -i '$s/$/ -c "cd vm-images;. setup.sh;bitbake vm-image-driver;exit"/' ./docker/enter_container.sh
-            make shell
+            CONTAINER_COMMANDS='/bin/bash -c "cd vm-images;. setup.sh;bitbake vm-image-driver;exit"' make shell
         - name: Copy kernel in place for seL4 builds
           working-directory: ./workspace
           run: |
@@ -131,7 +130,7 @@ jobs:
             done
         - name: Copy release documentaion
           run: |
-            cp ${{inputs.release_doc}} workspace/"${{env.TII_SEL4_RELEASE}}/"
+            cp ${{inputs.release-doc}} workspace/"${{env.TII_SEL4_RELEASE}}/"
         - name: Create release package 
           working-directory: ./workspace
           run: |

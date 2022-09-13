@@ -27,5 +27,5 @@ sel4test:
 docker:
 	docker build docker -t tiiuae/build:latest
 
-shell:
-	@docker/enter_container.sh
+shell: 
+	@docker/enter_container.sh ${CONTAINER_COMMANDS}

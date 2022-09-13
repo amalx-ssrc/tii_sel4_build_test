@@ -1,0 +1,12 @@
+Automate build release process and render documentation
+
+Creates a release package and uploads to artifactory.
+
+Build release process automated using workflow_dispatch event by
+collecting manifest repository location, version, release document
+location during the manual trigger. Release package documentation
+implemented by copying the manually edited release document from the git
+repository. The build jobs for above implementations run on self hosted
+github runner.
+
+Jira: HYPR-324 & HYPR-413.
