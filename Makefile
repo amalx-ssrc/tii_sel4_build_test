@@ -28,5 +28,4 @@ docker:
 	docker build docker -t tiiuae/build:latest
 
 shell: 
-	@docker/enter_container.sh ${CONTAINER_COMMANDS}
-	echo ${CONTAINER_COMMANDS}
+	@docker/enter_container.sh ${} ${CONTAINER_COMMANDS}

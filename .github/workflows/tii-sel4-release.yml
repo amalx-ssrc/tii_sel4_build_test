@@ -57,7 +57,7 @@ jobs:
           working-directory: ./workspace
           run: |
             sudo chown -R $USER.$USER ../workspace
-            CONTAINER_COMMANDS='/bin/bash -c "cd vm-images;. setup.sh;bitbake vm-image-driver;exit"' make shell
+            CONTAINER_COMMANDS="/workspace/scripts/bitbake.sh" make shell
         - name: Copy kernel in place for seL4 builds
           working-directory: ./workspace
           run: |
