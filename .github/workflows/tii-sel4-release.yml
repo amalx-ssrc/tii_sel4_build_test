@@ -57,7 +57,7 @@ jobs:
           working-directory: ./workspace
           run: |
             sudo chown -R $USER.$USER ../workspace
-            DIR="\"\"" CONTAINER_COMMANDS="/workspace/scripts/bitbake.sh" make shell
+            make linux-image
         - name: Copy kernel in place for seL4 builds
           working-directory: ./workspace
           run: |
