@@ -14,5 +14,5 @@ if [ -z "${container}" ] && [ ! -f /.dockerenv ]; then
 fi
 
 cd vm-images
-/bin/bash . setup.sh
+/bin/bash setup.sh
 bitbake vm-image-driver
