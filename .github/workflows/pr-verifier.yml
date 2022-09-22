@@ -1,0 +1,12 @@
+name: PR-verifier
+
+on:
+  repository_dispatch:
+    types: [pr-open]
+
+jobs:
+  Open-pr-verificaton:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Displaying PR details
+        run: echo ${{ github.event.client_payload }}
