@@ -19,7 +19,7 @@ jobs:
           path: 'tii_sel4_manifest'
 
       - name: Displaying PR details
-        run: ${{ github.event.client_payload.branch_name }}
-        
+        run: echo ${{ github.event.client_payload.branch_name }}
+
       - name: manifest generation
         run: scripts/open-pr.sh ${{ github.event.client_payload.branch_name }}
