@@ -8,5 +8,18 @@ jobs:
   Open-pr-verificaton:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code for using local actions
+        uses: actions/checkout@v2
+
+      - name: checkout manifest repo
+        uses: actions/checkout@v3
+        with:
+          repository: 'amalx-ssrc/tii_sel4_manifest'
+          ref: 'tii/development'
+          path: 'tii_sel4_manifest'
+
       - name: Displaying PR details
-        run: echo ${{ github.event.client_payload }}
+        run: ${{ github.event.client_payload.branch_name }}
+        
+      - name: manifest generation
+        run: scripts/open-pr.sh ${{ github.event.client_payload.branch_name }}
