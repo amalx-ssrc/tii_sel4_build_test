@@ -23,3 +23,6 @@ jobs:
 
       - name: manifest generation
         run: scripts/open-pr.sh ${{ github.event.client_payload.branch_name }}
+      
+      - name: Displaying
+        run: cat tii_sel4_manifest/external.xml
