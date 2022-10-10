@@ -24,6 +24,6 @@ jobs:
           ref: 'tii/development'
           path: 'tii_sel4_manifest'
       - name: manifest generation
-        run: scripts/open-pr.sh ${{ inputs.branch }}
+        run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
         run: cat tii_sel4_manifest/external.xml
