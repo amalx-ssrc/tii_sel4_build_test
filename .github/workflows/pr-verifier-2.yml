@@ -27,3 +27,11 @@ jobs:
         run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
         run: cat tii_sel4_manifest/external.xml
+      - uses: jfrog/setup-jfrog-cli@v2
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          # JFrog Platform access token
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+      - run: |
+          jf rt ping
+          jf rt u tii_sel4_manifest tii-sel4-manifest
