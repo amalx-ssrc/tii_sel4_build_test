@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code for using local actions
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          repository: amalx-ssrc/tii_sel4_build_test
+          ref: 'tii/development-test'
+          path: 'tii_sel4_build_test'
 
       - name: checkout manifest repo
         uses: actions/checkout@v3
