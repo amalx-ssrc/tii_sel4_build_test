@@ -27,14 +27,11 @@ jobs:
         run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
         run: cat tii_sel4_manifest/external.xml
-      - uses: jfrog/setup-jfrog-cli@v2
-      - name: Publish
-        shell: bash 
-        env:
-          JF_URL: ${{ secrets.JF_URL }}
-          # JFrog Platform access token
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-        run: |
-          jf c add --url "$JF_URL" --access-token "$JF_ACCESS_TOKEN" --interactive=false
-          jf rt ping
-          jf rt u tii_sel4_manifest tii-sel4-manifest
+      - name: Publish images to artifactory
+        uses: ./.github/actions/artifact-publish
+        with:
+          rt-user: ${{ secrets.RT_USER }}
+          rt-api-key: ${{ secrets.RT_API_KEY }}
+          rt-url: ${{ secrets.RT_URL}}
+          input-paths:  |
+            tii_sel4_manifest:tii-sel4-manifest
