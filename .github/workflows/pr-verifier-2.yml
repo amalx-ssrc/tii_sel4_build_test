@@ -28,7 +28,7 @@ jobs:
       - name: Displaying
         run: cat tii_sel4_manifest/external.xml
       - name: Publish images to artifactory
-        uses: ./.github/actions/artifact-publish
+        uses: tii_sel4_build_test/.github/actions/artifact-publish
         with:
           rt-user: ${{ secrets.RT_USER }}
           rt-api-key: ${{ secrets.RT_API_KEY }}
