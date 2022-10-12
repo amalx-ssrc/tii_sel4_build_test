@@ -8,7 +8,7 @@ on:
         type: string
 jobs:
   Open-pr-verificaton:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code for using local actions
         uses: actions/checkout@v3
