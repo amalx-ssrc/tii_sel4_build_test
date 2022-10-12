@@ -6,6 +6,9 @@ on:
       branch:
         required: true
         type: string
+      JF_ACCESS_TOKEN:
+        required: true
+        type: string
 jobs:
   Open-pr-verificaton:
     runs-on: ubuntu-latest
@@ -27,13 +30,13 @@ jobs:
         run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
         run: cat tii_sel4_manifest/external.xml
-      # - uses: jfrog/setup-jfrog-cli@v2
-      #   env:
-      #     JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
-      # - run: |
-      #     # Ping the server
-      #     jf rt ping
-      #     jf rt u tii_sel4_build_test:tii-sel4-manifest
+      - uses: jfrog/setup-jfrog-cli@v2
+        env:
+          JF_ENV_1: ${{ inputs.JF_ACCESS_TOKEN }}
+      - run: |
+          # Ping the server
+          jf rt ping
+          jf rt u tii_sel4_manifest/ tii-sel4-manifest
 
 
 
@@ -48,18 +51,18 @@ jobs:
       #       tii_sel4_manifest:tii-sel4-manifest
 
 
-      - name: installing jf 
-        env: 
-            RT_USER: ${{ secrets.RT_USER }}
-            RT_API_KEY: ${{ secrets.RT_API_KEY }}
-            RT_URL: ${{ secrets.RT_URL }}
-        run: |
-          wget -qO - https://releases.jfrog.io/artifactory/jfrog-gpg-public/jfrog_public_gpg.key | sudo apt-key add -
-          echo "deb https://releases.jfrog.io/artifactory/jfrog-debs xenial contrib" | sudo tee -a /etc/apt/sources.list
-          sudo apt update
-          sudo apt install -y jfrog-cli-v2-jf
+      # - name: installing jf 
+      #   env: 
+      #       RT_USER: ${{ secrets.RT_USER }}
+      #       RT_API_KEY: ${{ secrets.RT_API_KEY }}
+      #       RT_URL: ${{ secrets.RT_URL }}
+      #   run: |
+      #     wget -qO - https://releases.jfrog.io/artifactory/jfrog-gpg-public/jfrog_public_gpg.key | sudo apt-key add -
+      #     echo "deb https://releases.jfrog.io/artifactory/jfrog-debs xenial contrib" | sudo tee -a /etc/apt/sources.list
+      #     sudo apt update
+      #     sudo apt install -y jfrog-cli-v2-jf
 
-          echo uploading artifactory
-          jf c add --url "$RT_URL" --user "$RT_USER" --password "$RT_API_KEY" --interactive=false
-          jf rt u tii_sel4_manifest/ tii-sel4-manifest
+      #     echo uploading artifactory
+      #     jf c add --url "$RT_URL" --user "$RT_USER" --password "$RT_API_KEY" --interactive=false
+      #     jf rt u tii_sel4_manifest/ tii-sel4-manifest
 
