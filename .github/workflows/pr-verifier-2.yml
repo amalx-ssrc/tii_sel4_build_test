@@ -34,7 +34,7 @@ jobs:
         env:
           JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
       - run: |
-          jf rt u tii_sel4_manifest/ tii-sel4-manifest
+          jf rt u tii_sel4_manifest-${{ inputs.branch }}/ tii-sel4-manifest
 
 
 
