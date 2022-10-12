@@ -29,7 +29,7 @@ jobs:
       - name: manifest generation
         run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
-        run: cat tii_sel4_manifest/external.xml
+        run: cat tii_sel4_manifest-${{ inputs.branch }}/external.xml
       - uses: jfrog/setup-jfrog-cli@v2
         env:
           JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
