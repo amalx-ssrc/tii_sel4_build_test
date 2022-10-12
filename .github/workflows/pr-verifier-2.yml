@@ -27,22 +27,22 @@ jobs:
         run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
         run: cat tii_sel4_manifest/external.xml
-      - uses: jfrog/setup-jfrog-cli@v2
-        env:
-          JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
-      - run: |
-          # Ping the server
-          jf rt ping
-          jf rt u tii_sel4_build_test:tii-sel4-manifest
+      # - uses: jfrog/setup-jfrog-cli@v2
+      #   env:
+      #     JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
+      # - run: |
+      #     # Ping the server
+      #     jf rt ping
+      #     jf rt u tii_sel4_build_test:tii-sel4-manifest
 
 
 
 
-      # - name: Publish images to artifactory
-      #   uses: amalx-ssrc/tii_sel4_build_test/.github/actions/artifact-publish@tii/development-test
-      #   with:
-      #     rt-user: ${{ secrets.RT_USER }}
-      #     rt-api-key: ${{ secrets.RT_API_KEY }}
-      #     rt-url: ${{ secrets.RT_URL}}
-      #     input-paths:  |
-      #       tii_sel4_manifest:tii-sel4-manifest
+      - name: Publish images to artifactory
+        uses: amalx-ssrc/tii_sel4_build_test/.github/actions/artifact-publish@tii/development-test
+        with:
+          rt-user: ${{ secrets.RT_USER }}
+          rt-api-key: ${{ secrets.RT_API_KEY }}
+          rt-url: ${{ secrets.RT_URL}}
+          input-paths:  |
+            tii_sel4_manifest:tii-sel4-manifest
