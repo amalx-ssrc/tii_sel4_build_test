@@ -25,7 +25,7 @@ jobs:
         with:
           repository: 'amalx-ssrc/tii_sel4_manifest'
           ref: 'tii/development'
-          path: 'tii_sel4_manifest'
+          path: 'tii_sel4_manifest-${{ inputs.branch }}'
       - name: manifest generation
         run: tii_sel4_build_test/scripts/open-pr.sh ${{ inputs.branch }}
       - name: Displaying
@@ -34,8 +34,6 @@ jobs:
         env:
           JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
       - run: |
-          # Ping the server
-          jf rt ping
           jf rt u tii_sel4_manifest/ tii-sel4-manifest
 
 
