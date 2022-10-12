@@ -56,6 +56,6 @@ jobs:
           sudo apt install -y jfrog-cli-v2-jf
 
           echo uploading artifactory
-          jf c add --url "$RT_URL" --user "$RT_USER" --password "$RT_API_KEY" --interactive=false
+          jf c add --url https://artifactory.ssrcdevops.tii.ae:443 --user amal45 --password AKCp8kr16GhixaZdAwvdj5cdtX4moWGuXCCdgEM8zMhbKt9r4YT8QQsKSgtdX5hgQqqwp3zNw --interactive=false
           jf rt u tii_sel4_manifest/ tii-sel4-manifest
 
