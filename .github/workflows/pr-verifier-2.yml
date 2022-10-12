@@ -6,9 +6,9 @@ on:
       branch:
         required: true
         type: string
+    secrets:
       JF_ACCESS_TOKEN:
         required: true
-        type: string
 jobs:
   Open-pr-verificaton:
     runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
         run: cat tii_sel4_manifest/external.xml
       - uses: jfrog/setup-jfrog-cli@v2
         env:
-          JF_ENV_1: ${{ inputs.JF_ACCESS_TOKEN }}
+          JF_ENV_1: ${{ secrets.JF_ACCESS_TOKEN }}
       - run: |
           # Ping the server
           jf rt ping
