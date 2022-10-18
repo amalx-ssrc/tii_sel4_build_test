@@ -1,0 +1,16 @@
+name: Generate manifest
+description: Calls prepare_manifest.sh to generate manifest 
+
+inputs:
+  branch_name:
+    description: name of the branch
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Preparing manifest
+      shell: bash
+      run: |
+        tii_sel4_build_test/.github/actions/manifest-generate/prepare_manifest.sh ${{ inputs.branch }}
+

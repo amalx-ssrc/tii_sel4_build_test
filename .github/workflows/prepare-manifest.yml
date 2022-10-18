@@ -28,7 +28,10 @@ jobs:
           path: 'tii_sel4_manifest-${{ inputs.branch }}'
 
       - name: manifest generation
-        run: tii_sel4_build_test/scripts/prepare_manifest.sh ${{ inputs.branch }}
+        uses: amalx-ssrc/tii_sel4_build_test/.github/actions/manifest-generate/action.yml@tii/development-test
+        with:
+          branch_name: ${{ inputs.branch }}
+        # run: tii_sel4_build_test/scripts/prepare_manifest.sh ${{ inputs.branch }}
 
       - name: Displaying
         run: cat tii_sel4_manifest-${{ inputs.branch }}/external.xml
