@@ -21,7 +21,7 @@ curl  https://api.github.com/repos/${owner}/${repo}/pulls?state=open -H "Accept:
 
  branch_name=$(jq -r '.[] | .head.ref' api_file)
         for name in ${branch_name[@]}; do 
-            if [ $PR_BR_NAME = $name ]; then
+            if [[ $PR_BR_NAME = $name ]]; then
             #same_branch+=($repo)
             same_repocheck $repo
             fi
