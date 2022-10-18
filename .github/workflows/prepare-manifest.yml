@@ -28,7 +28,7 @@ jobs:
           path: 'tii_sel4_manifest-${{ inputs.branch }}'
 
       - name: manifest generation
-        uses: tii_sel4_build_test/.github/actions/manifest-generate
+        uses: tii_sel4_build_test/.github/actions/manifest-generate/action.yml
         with:
           branch_name: ${{ inputs.branch }}
         # run: tii_sel4_build_test/scripts/prepare_manifest.sh ${{ inputs.branch }}
