@@ -2,8 +2,7 @@
 owner=amalx-ssrc
 sel4_repos=(seL4_tools camkes-tool gitactions-pr)
 PR_BR_NAME=$1
-echo "branch name"
-echo $PR_BR_NAME
+
 same_repocheck () {
       repo=$1  
       pr_repo_owner=$( jq -r --arg PR_BR_NAME "$PR_BR_NAME" '.[] | select(.head.ref == $PR_BR_NAME) | .user.login' api_file )
@@ -23,9 +22,7 @@ curl  https://api.github.com/repos/${owner}/${repo}/pulls?state=open -H "Accept:
 
  branch_name=$(jq -r '.[] | .head.ref' api_file)
         for name in ${branch_name[@]}; do 
-            echo "if starts"
             if [ "$PR_BR_NAME" = "$name" ]; then
-            echo "in if"
             #same_branch+=($repo)
             same_repocheck $repo
             fi
