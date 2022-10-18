@@ -12,5 +12,5 @@ runs:
     - name: Preparing manifest
       shell: bash
       run: |
-        tii_sel4_build_test/.github/actions/manifest-generate/prepare_manifest.sh ${{ inputs.branch }}
+        tii_sel4_build_test/.github/actions/manifest-generate/prepare_manifest.sh ${{ inputs.branch_name }}
 

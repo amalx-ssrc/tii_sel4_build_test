@@ -2,6 +2,8 @@
 owner=amalx-ssrc
 sel4_repos=(seL4_tools camkes-tool gitactions-pr)
 PR_BR_NAME=$1
+echo "branch name"
+echo $PR_BR_NAME
 same_repocheck () {
       repo=$1  
       pr_repo_owner=$( jq -r --arg PR_BR_NAME "$PR_BR_NAME" '.[] | select(.head.ref == $PR_BR_NAME) | .user.login' api_file )
