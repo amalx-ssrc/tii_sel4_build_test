@@ -5,7 +5,7 @@ on:
     inputs:
       manifest-url:
         description: 'Manifest repository'
-        default: 'git@github.com:amalx-ssrc/tii_sel4_manifest.git'
+        default: 'https://github.com/amalx-ssrc/tii_sel4_manifest.git'
         required: false
         type: string
       manifest-revision:
