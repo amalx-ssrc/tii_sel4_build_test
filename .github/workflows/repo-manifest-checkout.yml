@@ -10,7 +10,7 @@ on:
         type: string
       manifest-revision:
         description: 'Manifest revision'
-        default: 'tii/development-testing'
+        default: 'tii/development'
         required: false
         type: string
       manifest-file:
