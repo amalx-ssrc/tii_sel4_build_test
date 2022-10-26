@@ -10,7 +10,7 @@ on:
         type: string
       manifest-revision:
         description: 'Manifest revision'
-        default: 'release/tii_sel4_1.1.0-rc1'
+        default: 'tii/development-testing'
         required: false
         type: string
       manifest-file:
