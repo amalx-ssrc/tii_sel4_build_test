@@ -35,7 +35,7 @@ jobs:
       steps:
         - name: Prepare workspace
           run: |
-           rm -rf *
+           sudo rm -rf *
            echo "TII_SEL4_RELEASE=tii_sel4_${{inputs.tii-sel4-version}}" >> $GITHUB_ENV
         - name: Checkout code for using local actions
           uses: actions/checkout@v2

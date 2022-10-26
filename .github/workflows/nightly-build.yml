@@ -1,0 +1,21 @@
+# Copyright 2022, Technology Innovation Institute
+
+name: Nightly build
+# on:
+#   schedule:
+#     - cron: '0 3 * * 1-5'
+
+on:
+  push:
+    
+jobs:
+  repo-manifest-checkout:
+    uses: ./.github/workflows/repo-manifest-checkout.yml
+  build-vm-images:
+    needs: repo-manifest-checkout
+    uses: ./.github/workflows/build-vmimages.yml
+    secrets:
+      ssh-key: ${{ secrets.CI_SSH_KEY }}
+      rt-user: ${{ secrets.RT_USER }}
+      rt-api-key: ${{ secrets.RT_APIKEY }}
+      rt-url: ${{ secrets.RT_URL }}
