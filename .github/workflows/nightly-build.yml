@@ -11,11 +11,13 @@ on:
 jobs:
   repo-manifest-checkout:
     uses: ./.github/workflows/repo-manifest-checkout.yml
+    secrets:
+      ssh-key: ${{ secrets.SSH_KEY }}
   build-vm-images:
     needs: repo-manifest-checkout
     uses: ./.github/workflows/build-vmimages.yml
     secrets:
-      ssh-key: ${{ secrets.CI_SSH_KEY }}
+      ssh-key: ${{ secrets.SSH_KEY }}
       rt-user: ${{ secrets.RT_USER }}
       rt-api-key: ${{ secrets.RT_APIKEY }}
       rt-url: ${{ secrets.RT_URL }}

@@ -23,7 +23,11 @@ on:
         default: 'rpi4_defconfig'
         required: false
         type: string
-
+    secrets:
+      ssh-key:
+        description: 'ssh key for checking out source code'
+        required: true
+        
 jobs:
   build_images:
     runs-on: ubuntu-latest
