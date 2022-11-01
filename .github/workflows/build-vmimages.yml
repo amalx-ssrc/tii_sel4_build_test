@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Checkout code for using local actions
         uses: actions/checkout@v2
-        
+
       - name: Download manifest
         uses: actions/download-artifact@v3
         with:

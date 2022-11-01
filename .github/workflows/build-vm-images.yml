@@ -46,7 +46,9 @@ jobs:
     steps:
       - name: Checkout code for using local actions
         uses: actions/checkout@v2
-
+        with:
+          repository: amalx-ssrc/tii_sel4_build_test
+          
       - name: Checkout code
         id: checkout
         uses: ./.github/actions/repo-manifest-checkout
