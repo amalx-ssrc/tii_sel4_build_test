@@ -1,0 +1,19 @@
+name: Nightly build
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+    secrets:
+      JF_ACCESS_TOKEN:
+        required: true
+
+jobs:
+  build-vm-images:
+    uses: ./.github/workflows/build-vm-images.yml
+    secrets:
+      ssh-key: ${{ secrets.CI_SSH_KEY }}
+      rt-user: ${{ secrets.RT_USER }}
+      rt-api-key: ${{ secrets.RT_APIKEY }}
+      rt-url: ${{ secrets.RT_URL }}
