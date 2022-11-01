@@ -8,6 +8,8 @@ on:
     secrets:
       JF_ACCESS_TOKEN:
         required: true
+      CI_SSH_KEY:
+        required: true
 
 jobs:
   build-vm-images:
