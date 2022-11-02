@@ -1,8 +1,8 @@
-name: Nightly build
+name: PR build
 on:
   workflow_call:
     inputs:
-      branch:
+      REPO_OVERRIDE:
         required: true
         type: string
     secrets:
@@ -14,8 +14,11 @@ on:
 jobs:
   build-vm-images:
     uses: ./.github/workflows/build-vm-images.yml
+    with:
+      repo-override: ${{ inputs.REPO_OVERRIDE }}
     secrets:
       ssh-key: ${{ secrets.CI_SSH_KEY }}
       rt-user: ${{ secrets.RT_USER }}
       rt-api-key: ${{ secrets.RT_APIKEY }}
       rt-url: ${{ secrets.RT_URL }}
+

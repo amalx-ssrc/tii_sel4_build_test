@@ -20,6 +20,16 @@ on:
         default: 'default.xml'
         required: false
         type: string
+      repo-override:
+        description: 'Repository url with name and revision'
+        default: ''
+        required: false
+        type: string
+      branch-override:
+        description: 'Name of the branch for replacing'
+        type: string
+        default: ''
+        required: false
       platform:
         description: 'Platform config'
         default: 'rpi4_defconfig'
@@ -49,6 +59,12 @@ jobs:
         with:
           repository: amalx-ssrc/tii_sel4_build_test
 
+      - name: Display repo and branch repo-override
+        run: |
+          echo "repo override"
+          echo ${{ inputs.repo-override }}
+          echo "here branch override which is empty"
+          echo ${{ inputs.branch-override }}
       - name: Checkout code
         id: checkout
         uses: ./.github/actions/repo-manifest-checkout
@@ -59,7 +75,8 @@ jobs:
           SSH_KEY: ${{ secrets.ssh-key }}
           SSH_KEYSCAN_URL: 'github.com'
           WORKSPACE: './workspace'
-
+          REPO-OVERRIDE: ${{ inputs.repo-override }}
+          BRANCH-OVERRIDE: ${{ inputs.branch-override }}
       - name: Dump build info
         run: |
           echo "Using manifest:"
