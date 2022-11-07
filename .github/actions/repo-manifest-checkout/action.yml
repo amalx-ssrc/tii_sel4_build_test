@@ -18,7 +18,13 @@ inputs:
     description: 'Name of the manifest file'
     required: true
     default: 'default.xml'
-
+  BRANCH_OVERRIDE:
+    description: 'Feature branch name (all repositories will be checked)'
+    required: false
+  REPO_OVERRIDE:
+    description: Repo name to override 
+    required: false
+    
   SSH_KEY:
     description: 'Optional ssh key for cloning'
     required: false

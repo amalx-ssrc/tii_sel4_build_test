@@ -5,6 +5,9 @@ on:
       REPO_OVERRIDE:
         required: true
         type: string
+      BRANCH_OVERRIDE:
+        required: false
+        type: string
     secrets:
       JF_ACCESS_TOKEN:
         required: true
@@ -16,6 +19,7 @@ jobs:
     uses: ./.github/workflows/build-vm-images.yml
     with:
       repo-override: ${{ inputs.REPO_OVERRIDE }}
+      branch-override: ${{ inputs.BRANCH_OVERRIDE }}
     secrets:
       ssh-key: ${{ secrets.CI_SSH_KEY }}
       rt-user: ${{ secrets.RT_USER }}
