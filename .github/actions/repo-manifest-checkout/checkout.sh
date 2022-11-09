@@ -82,8 +82,9 @@ repo init ${INPUT_REPO_INIT_OPTS} \
   -m "$INPUT_MANIFEST"
 pwd 
 ls
+
 echo "repo init successfull"
-./scripts/repo_override.sh $INPUT_REPO_OVERRIDE "./repo/manifest/external.xml"
+./workspace/scripts/repo_override.sh $INPUT_REPO_OVERRIDE "./repo/manifest/external.xml"
 # shellcheck disable=SC2086
 echo "starting sync"
 repo sync ${INPUT_REPO_SYNC_OPTS}
