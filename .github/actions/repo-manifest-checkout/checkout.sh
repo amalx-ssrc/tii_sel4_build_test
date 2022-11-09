@@ -81,8 +81,10 @@ repo init ${INPUT_REPO_INIT_OPTS} \
   -b "$INPUT_MANIFEST_REVISION" \
   -m "$INPUT_MANIFEST"
 
+echo "repo init successfull"
 ./repo_override.sh $INPUT_REPO_OVERRIDE "./repo/manifest/external.xml"
 # shellcheck disable=SC2086
+echo "starting sync"
 repo sync ${INPUT_REPO_SYNC_OPTS}
 
 echo "::endgroup::"
