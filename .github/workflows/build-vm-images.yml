@@ -60,6 +60,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: amalx-ssrc/tii_sel4_build_test
+          ref: tii/dev-manifest
 
       - name: Display repo and branch repo-override
         run: |
