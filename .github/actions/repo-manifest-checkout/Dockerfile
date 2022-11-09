@@ -5,7 +5,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y install \
     repo \
-    git
+    git \
+    curl \
+    jq 
 
 COPY ./checkout.sh /
 ENTRYPOINT ["/checkout.sh"]
