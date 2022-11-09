@@ -77,8 +77,8 @@ jobs:
           SSH_KEY: ${{ secrets.ssh-key }}
           SSH_KEYSCAN_URL: 'github.com'
           WORKSPACE: './workspace'
-          REPO-OVERRIDE: ${{ inputs.repo-override }}
-          BRANCH-OVERRIDE: ${{ inputs.branch-override }}
+          REPO_OVERRIDE: ${{ inputs.repo-override }}
+          BRANCH_OVERRIDE: ${{ inputs.branch-override }}
       - name: Dump build info
         run: |
           echo "Using manifest:"

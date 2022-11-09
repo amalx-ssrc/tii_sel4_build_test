@@ -1,0 +1,7 @@
+#! /bin/bash
+
+REPO_OVERRIDE=$1
+MANIFEST_PATH=$2
+
+cat $REPO_OVERRIDE
+cat $MANIFEST_PATH
