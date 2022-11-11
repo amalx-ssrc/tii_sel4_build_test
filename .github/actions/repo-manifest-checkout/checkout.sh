@@ -80,11 +80,16 @@ repo init ${INPUT_REPO_INIT_OPTS} \
   -u "$INPUT_MANIFEST_URL" \
   -b "$INPUT_MANIFEST_REVISION" \
   -m "$INPUT_MANIFEST"
-pwd 
-ls
 
 echo "repo init successfull"
-../scripts/repo_override.sh $INPUT_BRANCH_OVERRIDE ".repo/manifests/external.xml"
+if [ -n "$INPUT_REPO_OVERRIDES" ]; then
+  mv .repo/manifests/external.xml .repo/manifests/external_org.xml
+../scripts/repo_override.sh $INPUT_BRANCH_OVERRIDE ".repo/manifests/external_org.xml" > .repo/manifests/external.xml
+fi
+
+echo "output of if"
+
+cat .repo/manifests/external.xml
 # shellcheck disable=SC2086
 echo "starting sync"
 repo sync ${INPUT_REPO_SYNC_OPTS}
