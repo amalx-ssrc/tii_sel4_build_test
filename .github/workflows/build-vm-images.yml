@@ -52,8 +52,8 @@ on:
 
 jobs:
   build_images:
-    # runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
 
     steps:
       - name: Checkout code for using local actions
