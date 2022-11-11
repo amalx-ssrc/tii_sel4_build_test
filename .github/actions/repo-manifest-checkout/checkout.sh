@@ -90,6 +90,7 @@ fi
 echo "output of if"
 
 cat .repo/manifests/external.xml
+echo "end if"
 # shellcheck disable=SC2086
 echo "starting sync"
 repo sync ${INPUT_REPO_SYNC_OPTS}
