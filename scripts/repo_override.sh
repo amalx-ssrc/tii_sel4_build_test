@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo "repo_override      amalbabus/camkes-tool:main  " 
+
 
 REPO_OVERRIDE= $1
 
@@ -25,8 +25,6 @@ curl  https://api.github.com/repos/${owner}/${repo}/pulls?state=open -H "Accept:
 
             fi
         done
-
-echo "after"
 
 
 
