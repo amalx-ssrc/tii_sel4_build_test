@@ -3,6 +3,8 @@
 
 
 REPO_OVERRIDE= $1
+MANIFEST_PATH=$2
+
 
 PR_BR_NAME=$(echo $REPO_OVERRIDE | cut -d: -f2)
 repo_owner=$(echo $REPO_OVERRIDE | cut -d: -f1)
