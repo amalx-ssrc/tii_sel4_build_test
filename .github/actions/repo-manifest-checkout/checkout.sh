@@ -30,7 +30,7 @@ install -m 0700 -d "$SSH_CONF_DIR"
 
 if [ -n "$INPUT_KNOWN_HOSTS" ]; then
   echo "Add host verification keys"
-
+  touch $SSH_CONF_DIR/known_hosts
   echo "$INPUT_KNOWN_HOSTS" >> "$SSH_CONF_DIR/known_hosts"
   chmod 0600 "$SSH_CONF_DIR/known_hosts"
 fi
