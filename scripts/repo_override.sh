@@ -8,7 +8,7 @@ MANIFEST_PATH=$2
 
 PR_BR_NAME=$(echo $REPO_OVERRIDE | cut -d: -f2)
 repo_owner=$(echo $REPO_OVERRIDE | cut -d: -f1)
-
+owner=amalx-ssrc
 
 
 curl  https://api.github.com/repos/${owner}/${repo}/pulls?state=open -H "Accept: application/json" > api_file
