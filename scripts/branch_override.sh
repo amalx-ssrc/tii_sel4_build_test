@@ -12,7 +12,16 @@ MANIFEST_PATH=$2
 
 
 owner=amalx-ssrc
-sel4_repos=(seL4_tools camkes-tool gitactions-pr global-components)
+sel4_repos=(global-components
+            seL4
+            seL4_tools
+            util_libs
+            camkes-vm-examples
+            camkes-vm-linux
+            camkes-vm
+            camkes-vm-images
+            seL4_projects_libs
+            capdl )
 PR_BR_NAME=$1
 
 same_repocheck () {

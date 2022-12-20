@@ -84,12 +84,13 @@ repo init ${INPUT_REPO_INIT_OPTS} \
 echo "repo init successfull"
 
 
-
+echo " repo override"
 if [ -n "$INPUT_REPO_OVERRIDE" ]; then
     mv .repo/manifests/external.xml .repo/manifests/external_org.xml
   ../scripts/repo_override.sh "$REPO_OVERRIDES" ".repo/manifests/external_org.xml" > .repo/manifests/external.xml
 fi
 
+echo " branch override"
 
 if [ -n "$INPUT_BRANCH_OVERRIDE" ]; then
   mv .repo/manifests/external.xml .repo/manifests/external_org.xml
