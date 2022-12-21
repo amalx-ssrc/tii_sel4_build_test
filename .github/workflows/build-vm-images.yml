@@ -114,7 +114,7 @@ jobs:
           WORKSPACE: './workspace'
 
       - name: Publish images to artifactory
-        if: github.repository == 'tiiuae/tii_sel4_build'
+        if: github.repository == 'tii_sel4_build_test'
         uses: ./.github/actions/artifact-publish
         with:
           rt-user: ${{ secrets.rt-user }}
