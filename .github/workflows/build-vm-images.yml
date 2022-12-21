@@ -68,6 +68,8 @@ jobs:
           echo ${{ inputs.repo-override }}
           echo "here branch override which is empty"
           echo ${{ inputs.branch-override }}
+          echo "gihtub reponame"
+          echo ${{ github.repository }}
       - name: Checkout code
         id: checkout
         uses: ./.github/actions/repo-manifest-checkout
