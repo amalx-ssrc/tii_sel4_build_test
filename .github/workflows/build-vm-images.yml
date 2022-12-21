@@ -70,6 +70,8 @@ jobs:
           echo ${{ inputs.branch-override }}
           echo "gihtub reponame"
           echo ${{ github.repository }}
+          echo "event name"
+          echo ${{ github.event_name }}
       - name: Checkout code
         id: checkout
         uses: ./.github/actions/repo-manifest-checkout
